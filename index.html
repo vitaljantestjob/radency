@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta name="description" content="" />
+		<meta
+			name="author"
+			content="Vitalii Kolomiiets, Kyiv, Ukraine, vitaljan@gmail.com"
+		/>
+		<title></title>
+	</head>
+	<body></body>
+	<script>
+		const chooseBestDistance = (t, k, ls) => {
+			const calc = (n) => {
+				if (n < k - 1) calc(n + 1);
+				last = n;
+				while (n < len - 1) {
+					while (last < len - 1) {
+						last++;
+						console.log(n, ",", last);
+					}
+                    n++;
+				}
+			};
+
+			const len = ls.length;
+			if (t < 0) return false;
+			if (k < 2) return false;
+			if (len < k) return false;
+			if (len === k) {
+				let sum = ls.reduce((sum, elem) => {
+					return sum + elem;
+				}, 0);
+				return sum <= t ? sum : false;
+			}
+			calc(0);
+			return null;
+		};
+
+		console.log(chooseBestDistance(25, 3, [1, 2, 3, 4, 5, 6, 7, 8, 9]));
+	</script>
+</html>
